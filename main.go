@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"html/template"
 	"log"
+	"log/slog"
 	"net/http"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -34,6 +35,7 @@ type TradeOfferPageData struct {
 }
 
 func main() {
+	println("Hello, World!")
 	db, err := sql.Open("sqlite3", "data.db")
 	if err != nil {
 		log.Fatal(err)
@@ -135,5 +137,6 @@ func main() {
 		stationTemplate.Execute(w, data)
 	}))
 
+	slog.Info("Server started on port 8080")
 	http.ListenAndServe(":8080", nil)
 }
