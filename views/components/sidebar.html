@@ -1,8 +1,8 @@
 {{define "sidebar"}}
 <button
-  data-drawer-target="default-sidebar"
-  data-drawer-toggle="default-sidebar"
-  aria-controls="default-sidebar"
+  data-drawer-target="navigational-sidebar"
+  data-drawer-toggle="navigational-sidebar"
+  aria-controls="navigational-sidebar"
   type="button"
   class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
 >
@@ -23,7 +23,7 @@
 </button>
 
 <aside
-  id="default-sidebar"
+  id="navigational-sidebar"
   class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
   aria-label="Sidebar"
 >
@@ -34,12 +34,14 @@
       </h3>
 
       <a
+        data-drawer-hide="navigational-sidebar"
         href="/stations"
         class="text-gray-600 dark:text-gray-400 hover:underline block"
       >
         Station List
       </a>
       <a
+        data-drawer-hide="navigational-sidebar"
         href="/trades"
         class="text-gray-600 dark:text-gray-400 hover:underline block"
       >
