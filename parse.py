@@ -1,5 +1,6 @@
 import sqlite3
 import xml.etree.ElementTree as ET
+import sys
 
 import os
 if os.path.exists('data.db'):
@@ -9,7 +10,7 @@ if os.path.exists('data.db'):
 conn = sqlite3.connect('data.db')
 cursor = conn.cursor()
 
-tree = ET.parse('save.xml')
+tree = ET.parse(sys.argv[1])
 root = tree.getroot()
 
 def insert_stations():
