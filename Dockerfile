@@ -124,6 +124,7 @@ RUN apt-get update && apt-get install -y ca-certificates
 # Copy the executable from the build stage
 COPY --from=build /bin/server /bin/server
 COPY ./views ./views
+COPY ./static ./static
 COPY --from=parse /app/data.db ./data.db
 
 # Expose the port that the application listens on

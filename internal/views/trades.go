@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"sort"
-	"text/template"
 )
 
 type SellBuyPrice struct {
@@ -22,6 +21,7 @@ type SellBuyPrice struct {
 
 type TradesPageData struct {
 	SellBuyPrices []SellBuyPrice
+	Title         string
 }
 
 func HandleBestTradeOptionsPage(w http.ResponseWriter, r *http.Request, db *sql.DB) {
@@ -85,9 +85,31 @@ func HandleBestTradeOptionsPage(w http.ResponseWriter, r *http.Request, db *sql.
 		return profitPercantageI+normailzedVolumeI > profitPercantageJ+normailzedVolumeJ
 	})
 
-	tradesTemplate := template.Must(template.ParseFiles("views/trades.html"))
+	// condensed := r.URL.Query().Get("c")
 
-	tradesTemplate.Execute(w, TradesPageData{
+	// println(condensed)
+	// var tradesTemplate *template.Template
+	// if condensed == "true" {
+	// 	tradesTemplate = template.Must(template.ParseFiles(
+	// 		"views/util/content.html",
+	// 		"views/trades.html",
+	// 	))
+	// } else {
+	// 	tradesTemplate = template.Must(template.ParseFiles(
+	// 		"views/components/base.html",
+	// 		"views/trades.html",
+	// 		"views/components/header.html",
+	// 		"views/components/sidebar.html",
+	// 	))
+	// }
+
+	// tradesTemplate.Execute(w, TradesPageData{
+	// 	SellBuyPrices: sellBuyPrices,
+	// })
+
+	renderTemplate(w, r, "views/trades.html", TradesPageData{
 		SellBuyPrices: sellBuyPrices,
+		Title:         "Best Trade Options",
 	})
+
 }

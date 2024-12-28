@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"log"
 	"net/http"
-	"text/template"
 )
 
 type Station struct {
@@ -16,6 +15,7 @@ type Station struct {
 
 type StationPageData struct {
 	Stations []Station
+	Title    string
 }
 
 type TradeOffer struct {
@@ -28,11 +28,10 @@ type TradeOffer struct {
 type TradeOfferPageData struct {
 	Station     Station
 	TradeOffers []TradeOffer
+	Title       string
 }
 
 func HandleStationsPage(w http.ResponseWriter, r *http.Request, db *sql.DB) {
-	stationsTemplate := template.Must(template.ParseFiles("views/stations.html"))
-
 	stations, err := db.Query("SELECT * FROM stations")
 	if err != nil {
 		log.Fatal(err)
@@ -58,13 +57,13 @@ func HandleStationsPage(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 
 	data := StationPageData{
 		Stations: stationList,
+		Title:    "Stations",
 	}
 
-	stationsTemplate.Execute(w, data)
+	renderTemplate(w, r, "views/stations.html", data)
 }
 
 func HandleIndividualStationPage(w http.ResponseWriter, r *http.Request, db *sql.DB) {
-	stationTemplate := template.Must(template.ParseFiles("views/station.html"))
 
 	id := r.PathValue("id")
 
@@ -119,6 +118,5 @@ func HandleIndividualStationPage(w http.ResponseWriter, r *http.Request, db *sql
 		TradeOffers: tradeOfferList,
 	}
 
-	stationTemplate.Execute(w, data)
-
+	renderTemplate(w, r, "views/station.html", data)
 }

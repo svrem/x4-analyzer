@@ -29,6 +29,9 @@ func main() {
 		views.HandleBestTradeOptionsPage(w, r, db)
 	})
 
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
 	http.HandleFunc("/", views.HandleIndexPage)
 
 	slog.Info("Server started on port 8080")
