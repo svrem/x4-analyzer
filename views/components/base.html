@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
   {{template "header" .}}
 
-  <body class="bg-gray-100 dark:bg-gray-900 md:p-6 dark:text-white">
+  <body
+    class="bg-gray-100 dark:bg-gray-900 md:p-6 dark:text-white h-full flex flex-col"
+  >
     {{template "sidebar" .}} {{template "content" .}}
 
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-    <script src="/static/js/links.js"></script>
+    <p class="translate-x-2 sm:ml-64 mt-auto">
+      Made by
+      <a
+        href="https://github.com/svrem"
+        class="text-blue-600 dark:text-blue-500 hover:underline"
+        >svrem</a
+      >. The source code is available on
+      <a
+        class="text-blue-600 dark:text-blue-500 hover:underline"
+        href="https://github.com/svrem/x4-analyzer"
+        >Github</a
+      >.
+
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+      <script src="/static/js/links.js"></script>
+    </p>
   </body>
 </html>
