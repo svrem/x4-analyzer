@@ -2,6 +2,8 @@
 
 The X4 Analyzer is a tool that allows you to analyze that data contained in a [X4: Foundations](https://www.egosoft.com/games/x4/info_en.php) save file. The program consists of two parts: a Python script that reads the save file and stores the useful data in a SQLite database and a web interface written in Go that reads, parses and displays the extracted data.
 
+The frontend is written in HTML and Javascript and uses [tailwindcss](https://tailwindcss.com/) and some components from [Flowbite](https://flowbite.com/). The navigation is done using [htmx](https://htmx.org/). 
+
 ## Usage
 
 ### Requirements
@@ -36,6 +38,22 @@ To run the web interface, you need to run the following command:
 
 ```bash
 go run .
+```
+
+This will start a web server on `localhost:8080`. You can access the web interface by opening a web browser and navigating to `http://localhost:8080`.
+
+### Running with Docker
+
+Alternatively, you can run the web interface using Docker. First, you need to build the Docker image:
+
+```bash 
+docker build -t x4-analyzer .
+```
+
+Then, you can run the Docker container:
+
+```bash
+docker run -p 8080:8080 x4-analyzer
 ```
 
 This will start a web server on `localhost:8080`. You can access the web interface by opening a web browser and navigating to `http://localhost:8080`.
