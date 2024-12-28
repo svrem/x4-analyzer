@@ -113,7 +113,7 @@ FROM python:3.8-slim-buster AS parse
 WORKDIR /app
 COPY parse.py /app
 COPY save.xml /app
-RUN python parse.py
+RUN python parse.py save.xml
 
 # Use a Debian base image for the runtime stage
 FROM debian:latest
