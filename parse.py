@@ -32,7 +32,7 @@ def insert_stations():
             if ware is None:
                 continue
 
-            trade_offer_data.append(("buyoffer" if is_buyer else "selloffer", ware, price, amount, station.get('id')))
+            trade_offer_data.append(("buyoffer" if is_buyer else "selloffer", ware, int(price) / 100, amount, station.get('id')))
 
 
         id = station.get('id')

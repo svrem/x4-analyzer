@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{ template "header" .}}
+
+  <body class="bg-gray-100 dark:bg-gray-900 p-6 dark:text-white">
+    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+      Welcome to the X4 Analyzer
+    </h1>
+    <p class="max-w-4xl">
+      This is the compiled web interface for the X4 Analyzer. The program aims
+      to extract and process useful data from a X4 game save file. That file
+      consists of more than 6 million lines of XML. The 'compiling' of the data
+      is done with a python script that stores the useful data in a SQLite
+      database. That database can then be used by the Go web server to display
+      said data.
+    </p>
+    <p class="mt-2 max-w-4xl">
+      "X4: FOUNDATIONS brings our most sophisticated universe SIMULATION ever.
+      Fly every ship, EXPLORE space or manage an empire; TRADE, FIGHT, BUILD and
+      THINK carefully, while you embark on an epic journey.", as the game's
+      description reads. It's very fun. You can visit the store page
+      <a
+        class="text-blue-600 dark:text-blue-500 hover:underline"
+        href="https://store.steampowered.com/app/392160/X4_Foundations/"
+        >here</a
+      >.
+    </p>
+  </body>
+</html>
